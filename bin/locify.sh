@@ -26,12 +26,12 @@ show_menu() {
   echo "===================================="
   echo ""
   echo "Available commands:"
-  echo "  1) init           - Initialize locales JSON files"
-  echo "  2) reset          - Remove local CLI configuration & locale JSON files"
-  echo "  3) add            - Add a new translation key to locales JSON"
-  echo "  4) edit           - Modify a translation value in locales JSON"
-  echo "  5) delete         - Delete a translation key from locales JSON"
-  echo "  6) exit"
+  echo "  1) Init           - Initialize locales JSON files"
+  echo "  2) Reset          - Remove CLI configuration & locale JSON files"
+  echo "  3) Add            - Add a new translation key to locales JSON"
+  echo "  4) Edit           - Modify a translation value in locales JSON"
+  echo "  5) Delete         - Delete a translation key from locales JSON"
+  echo "  6) Exit"
   echo ""
 }
 

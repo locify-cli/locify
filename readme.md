@@ -17,7 +17,7 @@
 ### Install globally via npm
 
 ```sh
-npm install -g locify-cli
+npm install -g locify
 ```
 
 ### Verify installation

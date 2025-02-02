@@ -13,5 +13,22 @@
   "bugs": {
     "url": "https://github.com/rolandkun98/locify/issues"
   },
-  "homepage": "https://github.com/rolandkun98/locify#readme"
+  "homepage": "https://github.com/rolandkun98/locify#readme",
+  "keywords": [
+    "localization",
+    "i18n",
+    "internationalization",
+    "translations",
+    "json",
+    "locale",
+    "cli",
+    "localization-cli",
+    "language",
+    "i18n-tool",
+    "json-editor",
+    "translation-tool",
+    "automation",
+    "localization-manager",
+    "locify"
+  ]
 }

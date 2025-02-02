@@ -1,0 +1,16 @@
+{
+  "name": "locify",
+  "version": "1.0.0",
+  "description": "CLI tool for managing localization JSON files",
+  "bin": {
+    "locify": "./bin/locify.sh"
+  },
+  "scripts": {
+    "build": "chmod +x bin/*.sh"
+  },
+  "author": "Roland Kun",
+  "bugs": {
+    "url": "https://github.com/rolandkun98/locify/issues"
+  },
+  "homepage": "https://github.com/rolandkun98/locify#readme"
+}

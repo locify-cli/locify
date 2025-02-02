@@ -9,6 +9,7 @@
     "build": "chmod +x bin/*.sh"
   },
   "author": "Roland Kun",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rolandkun98/locify/issues"
   },

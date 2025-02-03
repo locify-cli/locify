@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-CONFIG_FILE="locify.config.sh"
+CONFIG_FILE="locify.config.json"
 
 # Function to initialize locales
 init_locales() {
@@ -28,11 +28,13 @@ init_locales() {
     fi
   done
 
-  # Save configuration to a separate file
-  echo "LOCALES_DIR=\"$locales_path\"" > "$CONFIG_FILE"
-  echo "LOCALES=\"$locales\"" >> "$CONFIG_FILE"
+  # Create the JSON configuration file
+  echo "{
+  \"LOCALES_DIR\": \"$locales_path\",
+  \"LOCALES\": [$(echo $locales | sed 's/ /", "/g' | sed 's/^/"/' | sed 's/$/"/')]
+}" > "$CONFIG_FILE"
 
-  echo "✅ Localization setup complete! Locale files created in $locales_path"
+  echo "✅ Localization setup complete! Configuration saved in $CONFIG_FILE"
 }
 
 # Run the initialization function

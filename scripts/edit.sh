@@ -1,16 +1,17 @@
 #!/usr/bin/env sh
 
-# Load the configuration file
-CONFIG_FILE="locify.config.sh"
+# Path to the JSON configuration file
+CONFIG_FILE="locify.config.json"
 
+# Check if the configuration file exists
 if [ ! -f "$CONFIG_FILE" ]; then
   echo "❌ Error: Configuration file not found! Please run 'init-locales' first."
   exit 1
 fi
 
-# Read configuration
-# shellcheck disable=SC1091
-. "$CONFIG_FILE"
+# Read values from the JSON config using `jq`
+LOCALES_DIR=$(jq -r '.LOCALES_DIR' "$CONFIG_FILE")
+LOCALES=$(jq -r '.LOCALES[]' "$CONFIG_FILE")
 
 # Validate that the JSON files exist
 for locale in $LOCALES; do

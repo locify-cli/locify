@@ -1,22 +1,20 @@
 #!/usr/bin/env sh
 
-# Load the configuration file
-CONFIG_FILE="locify.config.sh"
+# Path to the JSON configuration file
+CONFIG_FILE="locify.config.json"
 
+# Check if the configuration file exists
 if [ ! -f "$CONFIG_FILE" ]; then
   echo "❌ Error: Configuration file not found! Please run 'init-locales' first."
   exit 1
 fi
 
-# Read configuration
-# shellcheck disable=SC1091
-. "$CONFIG_FILE"
-
-# Convert LOCALES array to space-separated string if it's in array format
-LOCALES_STR=$(echo "${LOCALES[@]}" | tr ' ' ' ')
+# Read values from the JSON config using `jq`
+LOCALES_DIR=$(jq -r '.LOCALES_DIR' "$CONFIG_FILE")
+LOCALES=$(jq -r '.LOCALES[]' "$CONFIG_FILE")
 
 # Validate that the JSON files exist
-for locale in $LOCALES_STR; do
+for locale in $LOCALES; do
   locale_file="$LOCALES_DIR/$locale.json"
   if [ ! -f "$locale_file" ]; then
     echo "❌ Error: Missing locale file: $locale_file"
@@ -32,7 +30,7 @@ add_localization() {
   # Convert key to uppercase
   FORMATTED_KEY=$(echo "$key" | tr '[:lower:]' '[:upper:]')
 
-  for locale in $LOCALES_STR; do
+  for locale in $LOCALES; do
     locale_file="$LOCALES_DIR/$locale.json"
 
     echo "Enter the translation for $locale ($FORMATTED_KEY):"
@@ -44,10 +42,10 @@ add_localization() {
       key="$2"
       value="$3"
 
-      # Convert keys to array using POSIX-compatible method
+      # Convert keys to an array using POSIX-compatible method
       IFS='.' read -r -a keys <<< "$key"
 
-      # JQ script generation
+      # Generate JQ script
       jq_script="."
       path=""
 
@@ -58,7 +56,7 @@ add_localization() {
 
       jq_script="$jq_script | .${path} = \"$value\""
 
-      # Update JSON file
+      # Update the JSON file
       jq "$jq_script" "$file" > tmp.json && mv tmp.json "$file"
     }
 

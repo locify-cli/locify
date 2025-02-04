@@ -76,6 +76,38 @@ locify add
 
 You will be prompted to enter the JSON key and translations.
 
+```
+Enter the JSON key (e.g., home.content.body): home.content.body
+Enter the translation for en (HOME.CONTENT.BODY): Welcome Home!
+Enter the translation for hu (HOME.CONTENT.BODY): Üdv itthon!
+```
+
+This updates your JSON files as follows:
+
+**en.json:**
+
+```json
+{
+  "HOME": {
+    "CONTENT": {
+      "BODY": "Welcome Home!"
+    }
+  }
+}
+```
+
+**hu.json:**
+
+```json
+{
+  "HOME": {
+    "CONTENT": {
+      "BODY": "Üdv itthon!"
+    }
+  }
+}
+```
+
 #### Editing a Translation
 
 ```sh
@@ -83,6 +115,12 @@ locify edit
 ```
 
 You will be prompted to enter the key to modify and the new translations.
+
+```
+Enter the JSON key to modify: home.content.body
+Enter the new translation for en (HOME.CONTENT.BODY): Welcome!
+Enter the new translation for hu (HOME.CONTENT.BODY): Üdv!
+```
 
 #### Deleting a Translation
 

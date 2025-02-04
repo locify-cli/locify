@@ -8,11 +8,13 @@
 - **Add new translations**: Easily insert new translation keys into JSON files.
 - **Edit existing translations**: Modify the value of any existing localization key.
 - **Delete translations**: Remove unwanted localization keys safely.
+- **Clear Locify**: Remove Locify configuration and locale files.
+- **Command-line support**: Execute actions directly with CLI arguments.
 - **Cross-platform support**: Works on **macOS, Linux, and Windows**.
 
 ---
 
-## 📦 Installation
+## 📚 Installation
 
 ### Install globally via npm
 
@@ -23,14 +25,16 @@ npm install -g locify
 ### Verify installation
 
 ```sh
-locify
+locify --help
 ```
 
 ---
 
 ## 🎯 Usage
 
-### Show the interactive CLI menu
+Locify supports both **interactive mode** and **direct command execution**.
+
+### Running Locify in interactive mode
 
 ```sh
 locify
@@ -45,85 +49,69 @@ This will open the Locify CLI menu:
 
 Available commands:
   1) Init         - Initialize locales JSON files
-  2) Reset        - Remove CLI configuration & locale JSON files
-  3) Add          - Add a new translation key to locales JSON
-  4) Edit         - Modify a translation value in locales JSON
-  5) Delete       - Delete a translation key from locales JSON
+  2) Add          - Add a new translation key to locales JSON
+  3) Edit         - Modify a translation value in locales JSON
+  4) Delete       - Delete a translation key from locales JSON
+  5) Clear        - Remove CLI configuration & locale JSON files
   6) Exit
 
 Enter a number and press ENTER:
 ```
 
-## Example Usage
+### Running Locify with command-line arguments
 
-### Initializing Locales
+Instead of using the interactive mode, you can execute specific commands directly:
 
-First, initialize your localization JSON files:
+#### Initializing Locales
 
 ```sh
-locify
+locify init
 ```
 
-_Select `Init` from the menu and specify locale codes (e.g., `en,hu,fr`)._
+#### Adding a Translation
 
-### Adding a Translation
-
-After running `locify`, select `Add` from the CLI menu and enter:
-
-```
-Enter the JSON key (e.g., home.content.body): home.content.body
-Enter the translation for en (HOME.CONTENT.BODY): Welcome Home!
-Enter the translation for hu (HOME.CONTENT.BODY): Üdv itthon!
+```sh
+locify add
 ```
 
-This updates your JSON files as follows:
+You will be prompted to enter the JSON key and translations.
 
-**en.json:**
+#### Editing a Translation
 
-```json
-{
-  "HOME": {
-    "CONTENT": {
-      "BODY": "Welcome Home!"
-    }
-  }
-}
+```sh
+locify edit
 ```
 
-**hu.json:**
+You will be prompted to enter the key to modify and the new translations.
 
-```json
-{
-  "HOME": {
-    "CONTENT": {
-      "BODY": "Üdv itthon!"
-    }
-  }
-}
+#### Deleting a Translation
+
+```sh
+locify delete
 ```
 
-### Editing a Translation
+You will be prompted to enter the key to delete.
 
-Run `locify` and select `Edit` from the CLI menu. Then update an existing key:
+#### Clearing Configuration and Locale Files
 
-```
-Enter the JSON key to modify: home.content.body
-Enter the new translation for en (HOME.CONTENT.BODY): Welcome!
-Enter the new translation for hu (HOME.CONTENT.BODY): Üdv!
+```sh
+locify clear
 ```
 
-### Deleting a Translation
-
-Run `locify` and select `Delete`. Enter the key you want to remove:
-
-```
-Enter the JSON key to delete: home.content.body
-```
-
-This removes the corresponding entries from all locale JSON files.
+This will remove the Locify configuration file and all locale JSON files. You will be asked for confirmation before proceeding.
 
 ---
 
-## Resetting Locify Configuration
+## ℹ️ Help
 
-If you need to reset your configuration and locale files, run `locify`, select `Reset`, and confirm deletion.
+To see available commands at any time, run:
+
+```sh
+locify --help
+```
+
+---
+
+## 🌐 License
+
+This project is licensed under the [MIT License](LICENSE).

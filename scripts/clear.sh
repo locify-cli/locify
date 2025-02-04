@@ -5,7 +5,7 @@ CONFIG_FILE="locify.config.json"
 
 # Check if the configuration file exists
 if [ ! -f "$CONFIG_FILE" ]; then
-  echo "❌ Error: Configuration file not found! Please run 'init-locales' first."
+  echo "❌ Error: Configuration file not found! Please run 'locify init' first."
   exit 1
 fi
 
@@ -14,12 +14,12 @@ LOCALES_DIR=$(jq -r '.LOCALES_DIR' "$CONFIG_FILE")
 LOCALES=$(jq -r '.LOCALES[]' "$CONFIG_FILE")
 
 # Confirm deletion
-echo "⚠️  Warning: This will delete all locale JSON files in $LOCALES_DIR and reset the configuration."
+echo "⚠️  Warning: This will delete all locale JSON files in $LOCALES_DIR and remove the configuration."
 printf "Are you sure? (y/N): "
 read confirm
 
 if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
-  echo "❌ Reset cancelled."
+  echo "❌ Clear operation cancelled."
   exit 0
 fi
 
@@ -42,4 +42,4 @@ fi
 rm "$CONFIG_FILE"
 echo "🗑 Deleted configuration file: $CONFIG_FILE"
 
-echo "✅ Locale reset complete! You can now run 'init-locales' again."
+echo "✅ Locale data cleared! You can now run 'locify init' again if needed."

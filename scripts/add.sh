@@ -5,7 +5,7 @@ CONFIG_FILE="locify.config.json"
 
 # Check if the configuration file exists
 if [ ! -f "$CONFIG_FILE" ]; then
-  echo "❌ Error: Configuration file not found! Please run 'init-locales' first."
+  echo "❌ Error: Configuration file not found! Please run 'locify init' first."
   exit 1
 fi
 

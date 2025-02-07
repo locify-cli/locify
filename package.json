@@ -11,9 +11,9 @@
   "author": "Roland Kun",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rolandkun98/locify/issues"
+    "url": "https://github.com/locify-cli/locify/issues"
   },
-  "homepage": "https://github.com/rolandkun98/locify#readme",
+  "homepage": "https://github.com/locify-cli/locify",
   "keywords": [
     "localization",
     "i18n",

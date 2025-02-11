@@ -18,21 +18,24 @@ if [ ! -d "$SCRIPTS_DIR" ]; then
   exit 1
 fi
 
-# Function to show help
 show_help() {
   echo "===================================="
-  echo "              🚀 LOCIFY              "
+  echo "             🚀 LOCIFY              "
   echo "===================================="
   echo ""
   echo "Usage:"
-  echo "  locify [command]"
+  echo "  locify [command] [options]"
   echo ""
   echo "Available commands:"
-  echo "  init      - Initialize locales JSON files"
-  echo "  add       - Add a new translation key to locales JSON"
-  echo "  edit      - Modify a translation value in locales JSON"
-  echo "  delete    - Delete a translation key from locales JSON"
-  echo "  clear     - Remove CLI configuration & locale JSON files"
+  echo "  init          - Initialize locales JSON files"
+  echo "      Options:"
+  echo "        --new, -n   Create new locale files"
+  echo "        --link, -l  Use existing locale files"
+  echo ""
+  echo "  add           - Add a new translation key to locales JSON"
+  echo "  edit          - Modify a translation value in locales JSON"
+  echo "  delete        - Delete a translation key from locales JSON"
+  echo "  clear         - Remove CLI configuration & locale JSON files"
   echo ""
   echo "Use 'locify --help' to show this help message."
   echo ""
@@ -40,10 +43,15 @@ show_help() {
   exit 0
 }
 
-# Function to execute a command
 execute_command() {
   case "$1" in
-    init) sh "$SCRIPTS_DIR/init.sh" ;;
+    init)
+      case "$2" in
+        --new|-n) sh "$SCRIPTS_DIR/init.sh" --new ;;
+        --link|-l) sh "$SCRIPTS_DIR/init.sh" --link ;;
+        *) sh "$SCRIPTS_DIR/init.sh" ;;
+      esac
+      ;;
     add) sh "$SCRIPTS_DIR/add.sh" ;;
     edit) sh "$SCRIPTS_DIR/edit.sh" ;;
     delete) sh "$SCRIPTS_DIR/delete.sh" ;;
@@ -58,15 +66,14 @@ execute_command() {
 
 # If an argument is provided, execute the corresponding script
 if [ "$#" -gt 0 ]; then
-  execute_command "$1"
+  execute_command "$1" "$2"
   exit 0
 fi
 
-# Display menu
 show_menu() {
   clear
   echo "===================================="
-  echo "              🚀 LOCIFY              "
+  echo "             🚀 LOCIFY              "
   echo "===================================="
   echo ""
   echo "Available commands:"

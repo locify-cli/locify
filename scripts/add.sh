@@ -69,7 +69,7 @@ add_localization() {
 while true; do
   add_localization
 
-  echo "Do you want to add another localization? (y/n):"
+  echo "Do you want to add another translation? (y/n):"
   read answer
 
   case "$answer" in
